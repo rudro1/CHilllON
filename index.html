@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="style/style.css"></script>
+    <title>ChilLoN</title>
+    <link rel="shortcut icon" href="assets/chillon.png" type="image/x-icon">
+</head>
+<body class="w-11/12 mx-auto">
+    <header class="border-b-1  border-[#1717172B] pb-5 ">
+
+        <nav class="flex flex-col gap-y-5 md:flex-row justify-between py-2  gap-x-5 items-center ">
+
+            <div >
+             <a href="index.html" class=""><img src="assets/chillon.png" alt="" class="w-[200px]" ></a>
+            </div>
+            <div class=" flex-1">
+               <label class="input w-[400px]  md:w-[75%] flex justify-self-center">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </g>
+  </svg>
+  <input id="searchengine" type="search" class="grow " placeholder="Search" />
+  <kbd id="kbdsesrch" onclick="allbutton()" class=" btn btn-primary kbd h-7 bg-[#25252533] text-[#252525B3]  kbd-sm">Enter</kbd>
+
+
+            </div>
+            <div>
+                <button onclick="allbutton()" class="btn btn-sm bg-[#25252533] text-[#252525B3]">blog</button>
+            </div>
+        </nav>
+
+    </header>
+
+
+<section class="pt-5  ">
+
+<div class="div flex justify-center">
+
+    <div onclick="clickme()" id="" class="catagories_btn flex justify-center m-0  gap-x-3 w-fit ">
+<button id="all" class="btn   bg-[#25252533] text-[#252525B3] ">All</button>
+</div>
+
+</div>
+<div class="section_video_show grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-5 ">
+
+</div>
+
+<div  id="oops" class="flex flex-col items-center pt-5 hidden ">
+   <div><img src="assets/Icon.png" alt=""></div> 
+    <div class="text-4xl capitalize text-bold">Oops!! Sorry, There is no content here</div>
+</div>
+
+
+</section>
+
+    <main>
+
+
+    </main>
+    <footer></footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
