@@ -1,4 +1,6 @@
 let count=0;
+let s=[];
+let z;
 
 const catagorybtnload= async()=>
 {
@@ -59,7 +61,7 @@ count=count+1;
 
  }
 //  video_api_load()
- function videodisplay(videos,istrue)
+ function videodisplay(videos,istrue,short)
  {
 
 //    console.log(videos);
@@ -68,8 +70,6 @@ count=count+1;
 const section_video_show=document.querySelector(".section_video_show");
 // document.getElementById("all")
 section_video_show.innerHTML=" ";
-
-
 
 if(videos.length<=0)
 {
@@ -82,9 +82,6 @@ document.getElementById("oops").classList.remove("hidden")
 else {
        document.querySelector(".section_video_show").classList.remove("hidden") 
 document.getElementById("oops").classList.add("hidden")
-
-
-
 
 
 if( istrue==false )
@@ -102,71 +99,90 @@ else
 videos=videos.splice(0,5);
 }
 
-//  if(videos.length<=0){
-// // alert("lol")
 
 
-// }
+// y.forEach(n=>{
+//     if(parseInt(
+//     videos.
+//  others.views.split("k").toString())>n)
 
+//  {console.log("video",videos)}
 
+// })
 
+// console.log(z,"zzzz")
 
+// let y=s.sort()
+//  console.log(s,"s")
 
+let sfort=short;
+  document.getElementById("sort").addEventListener("click",()=>
+{
+ let videocopy=[...videos];
+   /// short=true;
+    console.log(videocopy,"videocopy")
+   // videodisplay(null,null,true)
+    //console.log(short)
+emni(videocopy);
+    
+}
+)
+if(sfort==true)
+{
+    
+videos=videos.sort((a,b)=>
+
+{
+let views1=parseInt(a.others.views.split("k").toString())*1000;
+let views2=parseInt(b.others.views.split("k").toString())*1000;
+
+return views2-views1;
+}
+
+)}
+
+  
+
+// console.log(videos)
 videos.forEach(video=>
     {
 
-
-// section_video_show.innerHTML="";
 
 video.authors.forEach(author=>{
 const card=document.createElement("div");
 card.classList="card bg-base-100  ";
     // console.log(author)
 
+    
 card.innerHTML=`
 
 
 
-<figure class=" h-[50%] ">
+<figure class=" h-[50%] relative">
     <img
       src="${video.thumbnail}"
-      alt="${video.title}" />
-  </figure>
-  <div class="card-body   ">
-    <div class="div flex card-title">
+      alt="${video.title}" class="h-full  w-full object-cover" />
+${video.others.posted_date?.length==0?"":`<span class="absolute bottom-2 right-2 bg-black text-white text-xs rounded ">${gettime(video.others.posted_date)}</span>`}
 
-     <div class="chat-image avatar">
-    <div class="w-10 rounded-full">
+  </figure>
+    <div class="div flex flex-col  md:flex-row py-2 px-0 gap-2 items-center">   
+    <div class="">
       <img
         alt="${author.profile_name}"
         src="${author.profile_picture}"
-      />
+     class="w-10 h-10 rounded-full object-cover" />
     </div>
-    
-  </div>
-   
-    
-    <div class="chat-bubble">${video.title}</div>
-
-     
-   
-
-</div>
-   <div class=" flex items-center gap-x-1 h-4 pt-2 ">
+  
+    <div class="flex flex-col items-center md:block">
+<div class="text-xl font-bold">${video.title}</div>
+   <div class=" flex  items-center gap-x-1 ">
     <div class="text-[#171717B3] text-md">${author.profile_name}</div>
-   
 
-<div id="verified" class="">
-
-
-
-${author.verified ? `<img src="assets/verify.png" alt="" class="w-[30px]" >` : ""}
+${author.verified===true ? `<img src="assets/verify.png" alt="" class="w-[25px] object-cover" >` : ""}
 </div>
-
-   </div>
-       <p class="text-[#171717B3] text-md">${video.
-others.views}views</p>
-  </div>
+       <div class="text-[#171717B3] text-md">${video.
+others.views}views</div>
+</div>
 
 
 
@@ -182,11 +198,12 @@ section_video_show.appendChild(card);
     
 
 
-
+ 
         //console.log(video.thumbnail)
-    }
-)
+    
 
+    
+})
 
 
 
@@ -287,8 +304,9 @@ event.target.classList.add("bg-[#FF1F3D]","text-white")
 
 
 
-
+const searchengine=document.getElementById("searchengine")
 const search_btn=document.getElementById("kbdsesrch");
+searchengine.addEventListener("keyup",search)
 search_btn.addEventListener("click",search)
  async function search()
 {
@@ -334,7 +352,7 @@ document.getElementById("oops").classList.add("hidden")
     const section_video_show=document.querySelector(".section_video_show");
 videos.authors.forEach(author=>{
 const card=document.createElement("div");
-card.classList="card bg-base-100  ";
+card.classList="card  ";
     // console.log(author)
 
 card.innerHTML=`
@@ -344,43 +362,28 @@ card.innerHTML=`
 <figure class=" h-[50%] ">
     <img
       src="${videos.thumbnail}"
-      alt="${videos.title}" />
-  </figure>
-  <div class="card-body   ">
-    <div class="div flex card-title">
+      alt="${videos.title}" class="h-full  w-full object-cover" />
 
-     <div class="chat-image avatar">
-    <div class="w-10 rounded-full">
+
+  </figure>
+    <div class="div flex flex-col  md:flex-row py-2 px-0 gap-2 items-center">   
+    <div class="">
       <img
         alt="${author.profile_name}"
         src="${author.profile_picture}"
-      />
+     class="w-10 h-10 rounded-full object-cover" />
     </div>
-    
-  </div>
-   
-    
-    <div class="chat-bubble">${videos.title}</div>
-
-     
-   
-
-</div>
-   <div class=" flex items-center gap-x-1 h-4 pt-2 ">
+  
+    <div class="flex flex-col items-center md:block">
+<div class="text-xl font-bold">${videos.title}</div>
+   <div class=" flex  items-center gap-x-1 ">
     <div class="text-[#171717B3] text-md">${author.profile_name}</div>
-   
 
-<div id="verified" class="">
-
-
-
-${author.verified ? `<img src="assets/verify.png" alt="" class="w-[30px]" >` : ""}
+${author.verified===true ? `<img src="assets/verify.png" alt="" class="w-[25px] object-cover" >` : ""}
 </div>
-
-   </div>
-       <p class="text-[#171717B3] text-md">${videos.
-others.views}views</p>
-  </div>
+       <div class="text-[#171717B3] text-md">${videos.
+others.views}views</div>
+</div>
 
 
 
@@ -398,9 +401,27 @@ section_video_show.appendChild(card);
 
 
 
-function navbarimg()
+const gettime=(data)=>
 {
-    window.location.reaload();
+//     console.log(data)
+// const day=parseInt(data/3104000);
+
+const hour=parseInt(data/3600);
+const day=parseInt(hour/24);
+const week=parseInt(day/7);
+const month=parseInt(week/4)
+const year=parseInt(month/12);
+const remseconds=(data%3600);
+const minute=parseInt(remseconds/60)
+const second=parseInt(remseconds%60)
+return(" "+ year+ " year " +hour+ " hour "+ minute+ " minute "+second+ " seconds")
+
 }
 
 // console.log(document.querySelectorAll("o"))
+
+function emni(take)
+{
+console.log(take,"take")
+videodisplay(take,false,true);
+}
